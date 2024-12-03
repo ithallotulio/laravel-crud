@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Produto;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', function () { # o certo era criar um controller, na volta eu arrumo
+    $produtos = Produto::all();
+    return view('home', compact('produtos'));
 })->name('home');
 
 Route::middleware('auth')->group(function () {
