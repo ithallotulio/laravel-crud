@@ -16,6 +16,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -30,7 +31,7 @@ class ProdutoResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nome')->required(),
-                FileUpload::make('foto')->disk('public')->directory('images'),
+                FileUpload::make('foto')->disk('public'),
                 TextInput::make('valor')->required(),
                 TextInput::make('descricao')->required(),
             ]);
@@ -40,6 +41,10 @@ class ProdutoResource extends Resource
     {
         return $table
             ->columns([
+                ImageColumn::make('foto')
+                ->url(fn ($record) => asset('storage/' . $record->foto))                
+                ->width(50)
+                ->height(50),
                 TextColumn::make('nome'),
                 TextColumn::make('valor'),
                 TextColumn::make('descricao')->limit(50),
