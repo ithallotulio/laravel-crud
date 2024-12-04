@@ -11,7 +11,7 @@
     <!-- Barra de Navegação -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Minha Loja</a>
+            <a class="navbar-brand" href="/">AnyBuy</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,7 @@
                             <a class="nav-link" href="{{ route('login') }}">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Registrar</a>
+                            <a class="nav-link" href="{{ route('register') }}">Registrar-se</a>
                         </li>
                     @endguest
 
@@ -44,7 +44,7 @@
 
     <!-- Produtos -->
     <div class="container my-5">
-        <h2 class="text-center mb-4">Produtos</h2>
+        <h2 class="text-center mb-4">Nosso Catálogo</h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             <!-- Exemplo de Produto -->
             @foreach ($produtos as $produto)
@@ -53,7 +53,7 @@
                         <img src="{{ asset('storage/images/' . $produto->foto) }}" class="card-img-top" alt="{{ $produto->nome }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->nome }}</h5>
-                            <p class="card-text">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                            <p class="card-text">R$ {{ number_format($produto->valor, 2, ',', '.') }}</p>
                         </div>
                         <div class="card-footer">
                             <a href="#" class="btn btn-primary">Ver Detalhes</a>
