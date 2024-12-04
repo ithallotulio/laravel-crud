@@ -56,7 +56,13 @@
                             <p class="card-text">R$ {{ number_format($produto->valor, 2, ',', '.') }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                            <!-- Botão para abrir o modal -->
+                            <a href="#" class="btn btn-primary btn-detalhes" 
+                               data-nome="{{ $produto->nome }}" 
+                               data-descricao="{{ $produto->descricao }}" 
+                               data-valor="{{ number_format($produto->valor, 2, ',', '.') }}">
+                                Ver Detalhes
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -64,8 +70,51 @@
         </div>
     </div>
 
+    <!-- Modal de Detalhes -->
+    <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="produtoModalLabel">Detalhes do Produto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Conteúdo do modal (será preenchido dinamicamente) -->
+                    <h5 id="produtoNome"></h5>
+                    <p id="produtoDescricao"></p>
+                    <p><strong>Valor: R$ <span id="produtoValor"></span></strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Adicionando o JS do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Seleciona todos os botões "Ver Detalhes"
+            const detalhesButtons = document.querySelectorAll('.btn-detalhes');
+
+            detalhesButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Obtém as informações do produto
+                    const produtoNome = this.getAttribute('data-nome');
+                    const produtoDescricao = this.getAttribute('data-descricao');
+                    const produtoValor = this.getAttribute('data-valor');
+
+                    // Preenche o modal com as informações
+                    document.getElementById('produtoNome').textContent = produtoNome;
+                    document.getElementById('produtoDescricao').textContent = produtoDescricao;
+                    document.getElementById('produtoValor').textContent = produtoValor;
+
+                    const modal = new bootstrap.Modal(document.getElementById('produtoModal'));
+                    modal.show();
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
