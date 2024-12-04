@@ -50,7 +50,7 @@
             @foreach ($produtos as $produto)
                 <div class="col">
                     <div class="card shadow-sm h-100">
-                        <img src="{{ asset('storage/images/' . $produto->foto) }}" class="card-img-top" alt="{{ $produto->nome }}" style="width: 100%; height: 250px; object-fit: cover;">
+                        <img src="{{ asset('storage/' . $produto->foto) }}" class="card-img-top" alt="{{ $produto->nome }}" style="width: 100%; height: 250px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title">{{ $produto->nome }}</h5>
                             <p class="card-text">R$ {{ number_format($produto->valor, 2, ',', '.') }}</p>
