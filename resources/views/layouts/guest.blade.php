@@ -18,7 +18,8 @@
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
             <div>
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <img src="https://img.icons8.com/?size=100&id=4A8ObomuuPJ3&format=png&color=000000" alt="logo" width="100">
+                    <span style="color: white; margin-left: 20px;">AnyFood</span>
                 </a>
             </div>
 
