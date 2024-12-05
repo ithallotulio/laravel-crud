@@ -45,30 +45,36 @@
     <!-- Produtos -->
     <div class="container my-5">
         <h2 class="text-center mb-4">Nosso Cardápio</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-            <!-- Exemplo de Produto -->
-            @foreach ($produtos as $produto)
-                <div class="col">
-                    <div class="card shadow-sm h-100">
-                        <img src="{{ asset('storage/' . $produto->foto) }}" class="card-img-top" alt="{{ $produto->nome }}" style="width: 100%; height: 250px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $produto->nome }}</h5>
-                            <p class="card-text">R$ {{ number_format($produto->valor, 2, ',', '.') }}</p>
-                        </div>
-                        <div class="card-footer">
-                            <!-- Botão para abrir o modal -->
-                            <a href="#" class="btn btn-primary btn-detalhes" 
-                               data-nome="{{ $produto->nome }}" 
-                               data-descricao="{{ $produto->descricao }}" 
-                               data-valor="{{ number_format($produto->valor, 2, ',', '.') }}">
-                                Ver Detalhes
-                            </a>
+        @if ($produtos->isEmpty())
+            <div class="alert alert-warning text-center" role="alert">
+                Nenhum produto cadastrado no momento.
+            </div>
+        @else
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                @foreach ($produtos as $produto)
+                    <div class="col">
+                        <div class="card shadow-sm h-100">
+                            <img src="{{ asset('storage/' . $produto->foto) }}" class="card-img-top" alt="{{ $produto->nome }}" style="width: 100%; height: 250px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $produto->nome }}</h5>
+                                <p class="card-text">R$ {{ number_format($produto->valor, 2, ',', '.') }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <!-- Botão para abrir o modal -->
+                                <a href="#" class="btn btn-primary btn-detalhes" 
+                                data-nome="{{ $produto->nome }}" 
+                                data-descricao="{{ $produto->descricao }}" 
+                                data-valor="{{ number_format($produto->valor, 2, ',', '.') }}">
+                                    Ver Detalhes
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
+                @endforeach
+            </div>
+        @endif
     </div>
+
 
     <!-- Modal de Detalhes -->
     <div class="modal fade" id="produtoModal" tabindex="-1" aria-labelledby="produtoModalLabel" aria-hidden="true">
