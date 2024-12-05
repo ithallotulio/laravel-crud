@@ -19,7 +19,7 @@
             <div>
                 <a href="/">
                     <img src="https://img.icons8.com/?size=100&id=4A8ObomuuPJ3&format=png&color=000000" alt="logo" width="100">
-                    <span style="color: white; margin-left: 20px;">AnyFood</span>
+                    <span style="color: white; margin-left: 19px;">AnyFood</span>
                 </a>
             </div>
 
