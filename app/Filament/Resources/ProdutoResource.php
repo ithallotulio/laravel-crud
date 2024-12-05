@@ -31,7 +31,7 @@ class ProdutoResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nome')->required(),
-                FileUpload::make('foto')->disk('public'),
+                FileUpload::make('foto')->disk('images'),
                 TextInput::make('valor')->required(),
                 TextInput::make('descricao')->required(),
             ]);
@@ -42,7 +42,7 @@ class ProdutoResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('foto')
-                ->url(fn ($record) => asset('storage/' . $record->foto))                
+                ->disk('images')                
                 ->width(50)
                 ->height(50),
                 TextColumn::make('nome'),
@@ -54,7 +54,7 @@ class ProdutoResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                // Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
