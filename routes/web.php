@@ -1,13 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Models\Produto;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () { # o certo era criar um controller, na volta eu arrumo
-    $produtos = Produto::all();
-    return view('home', compact('produtos'));
-})->name('home');
+Route::get('/', [ProdutoController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -11,6 +11,7 @@
     <!-- Barra de Navegação -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
+            <img src="https://img.icons8.com/?size=100&id=4A8ObomuuPJ3&format=png&color=000000" alt="logo" width="50">
             <a class="navbar-brand" href="/">AnyFood</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
